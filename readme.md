@@ -3,3 +3,6 @@ LuaChecker is a little web app to check lua addons for Garrys Mod for functions 
 its a Free time project and i cant effort my complete time to it so it seems a little unsorted ^^
 
 and this is a proof of concept ;)
+
+
+You can do what you want with it but pls name me :)
