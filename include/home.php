@@ -9,7 +9,7 @@
 
 
 <form action="?p=check" method="post" enctype="multipart/form-data">
-<h4>Check Your Code (Max 2Mb):</h4>
+<h4>Check Your Code (Max 2Mb, ZIP):</h4>
 <input class="control-label col-sm-5" type="file" name="datei"> <input type="submit" name ="lelelrs">
 <?php echo $reCAPTCHA->getHtml(); ?>
 </form>

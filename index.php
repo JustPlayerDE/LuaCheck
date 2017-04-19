@@ -1,5 +1,6 @@
 ﻿<?php
 session_start();
+require('config.php');
 require('sys/functions.php');
 
 ?>
@@ -52,7 +53,7 @@ if (!empty($Successes))
     endforeach;
 ?>
 <noscript><div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?
-echo $lang["no_javascript"];
+echo "Please Enable JavaScript!";
 ?></div></noscript>
 
 <?
