@@ -3,7 +3,7 @@
 
 $TotalRisk   = 0;
 $TotalFounds = 0;
-
+$BreakCurrent = false;
 
 ?>
 <center><h1>This Addon has an Risk level of:</h1></center>
@@ -30,7 +30,7 @@ if (isset($_FILES['datei']) && !empty($_POST['lelelrs'])) {
             $FName = $FName[1];
             if ($FName == $Config['Search_For_The_File'])
                 if (zip_entry_open($zip, $zip_entry)) {
-                    
+
                     $Line = 0;
                     $file = explode("\n", zip_entry_read($zip_entry));
                     foreach ($file as $t) {
@@ -40,21 +40,27 @@ if (isset($_FILES['datei']) && !empty($_POST['lelelrs'])) {
                             //if(!preg_match("/\/\//",$t, $treffer))
                             if (preg_match($SearchThis, $t, $treffer)) {
                                 
-                                
-                                
-                                $Treffer[] = Array(
-                                    'Found' => $t,
-                                    'Path' => zip_entry_name($zip_entry),
-                                    'Type' => $SearchFor[$SearchThis]['Type'],
-                                    'Desc' => $SearchFor[$SearchThis]['Desc'],
-                                    'Risk' => $SearchFor[$SearchThis]['Risk'],
-                                    'Line' => $Line
-                                );
-                                
-                                $TotalFounds++;
-                                $TotalRisk = $TotalRisk + $SearchFor[$SearchThis]['Risk'];
-                                if ($SearchFor[$SearchThis]['Risk'] > $Highest)
-                                    $Highest = $SearchFor[$SearchThis]['Risk'];
+								foreach($Whitelisted as $IgnoreThis) {
+									if(preg_match($IgnoreThis, zip_entry_name($zip_entry))) {
+										$BreakCurrent = true;
+									}
+								}
+								
+								if($BreakCurrent) continue;
+									$Treffer[] = Array(
+										'Found' => $t,
+										'Path' => zip_entry_name($zip_entry),
+										'Type' => $SearchFor[$SearchThis]['Type'],
+										'Desc' => $SearchFor[$SearchThis]['Desc'],
+										'Risk' => $SearchFor[$SearchThis]['Risk'],
+										'Line' => $Line
+									);
+									
+									$TotalFounds++;
+									$TotalRisk = $TotalRisk + $SearchFor[$SearchThis]['Risk'];
+									if ($SearchFor[$SearchThis]['Risk'] > $Highest)
+										$Highest = $SearchFor[$SearchThis]['Risk'];
+								
                                 
                             }
                         }
