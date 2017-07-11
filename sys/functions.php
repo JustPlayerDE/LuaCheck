@@ -1,4 +1,4 @@
-<?
+<?php
 
 function converttext($text){ // idk why i put it in here but it can maybe help... in the next years... i hope xD
  $text = str_replace("ä", "&auml;", $text);

@@ -42,21 +42,8 @@ require('sys/functions.php');
 
   
 <div class="container" style="width:80%;">
-<?
-if (!empty($Errors))
-    foreach ($Errors as $error):
-        echo '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' . converttext($error) . '</div>';
-    endforeach;
-if (!empty($Successes))
-    foreach ($Successes as $success):
-        echo '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' . converttext($success) . '</div>';
-    endforeach;
-?>
-<noscript><div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?
-echo "Please Enable JavaScript!";
-?></div></noscript>
 
-<?
+<?php
 
     include("include/" . maininclude());
 

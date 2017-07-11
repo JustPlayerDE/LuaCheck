@@ -1,4 +1,4 @@
-<?
+<?php
 $Config['Max_Allowed_Bytes_Per_Upload'] = 2000000; // The Max file size allowed per Uploaded File
 $Config['Search_For_The_File'] = "lua"; // What for files need to be checked? (only one type, sorry)
 
@@ -104,3 +104,5 @@ $SearchFor["/_G\[/"]['Desc'] = "References global table";
 $SearchFor["/rcon_password/"]['Type'] = "RCON";
 $SearchFor["/rcon_password/"]['Risk'] = "5";
 $SearchFor["/rcon_password/"]['Desc'] = "Reading or Setting the Server's RCON";
+
+?>

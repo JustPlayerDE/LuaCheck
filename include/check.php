@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 $TotalRisk   = 0;
@@ -7,7 +7,8 @@ $BreakCurrent = false;
 
 ?>
 <center><h1>This Addon has an Risk level of:</h1></center>
-<?
+<?php
+
 
 
 $Highest = 0;
@@ -76,7 +77,8 @@ if (isset($_FILES['datei']) && !empty($_POST['lelelrs'])) {
     }
     unlink($_FILES['datei']['tmp_name']);
     
-?><pre id="Advanced" style="display:none;"><?
+?><pre id="Advanced" style="display:none;">
+<?php
     foreach ($Treffer as $L)
         echo "Found: " . $L['Type'] . " - " . $L['Path'] . ":" . $L['Line'] . " - <B>(" . $L['Desc'] . ")</b> Risk:<font color='#b3002d'><b>" . $L['Risk'] . "</b></font> &#9;&#9;<font color='#424251'>" . $L['Found'] . "</font>";
 ?></pre><h1><center>average: <b><?= round((($TotalRisk / $TotalFounds) * 2), 0) / 2; ?></b><br>highest level <b><?= $Highest; ?></b></h1></center><br><center>Use it at your own risk!<br><a href="#" onclick="toggle_visibility('Advanced');">Toggle Advanced Log</a></center><?
