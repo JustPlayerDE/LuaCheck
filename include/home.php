@@ -29,6 +29,8 @@
 </form>
 
 <script type="text/javascript">
+    var maxSize = <?= $Config['FileSize']; ?>;
+
     function toggle_visibility(id) {
         var e = document.getElementById(id);
         if (e.style.display == 'block')
@@ -36,4 +38,13 @@
         else
             e.style.display = 'block';
     }
+
+    // Just to prevent useless uploads
+    $('form').submit(function(e) {
+        if (!($('#file')[0].files[0].size < maxSize * 1024)) {
+            //Prevent default and display error
+            alert("The file cannot be larger than " + maxSize + " KBytes!");
+            e.preventDefault();
+        }
+    });
 </script>
