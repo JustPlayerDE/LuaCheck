@@ -2,8 +2,24 @@
 session_start();
 require('config.php');
 require('sys/functions.php');
-?>
 
+if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
+
+    $AllowedTypes = array("application/x-zip-compressed");
+
+    if (!in_array($_FILES["datei"]["type"], $AllowedTypes)) {
+        header("Location: /?invalid&type");
+        exit();
+    }
+    if ($_FILES["datei"]["size"] > $Config['FileSize']) {
+        header("Location: /?invalid&size");
+        exit();
+    }
+
+    $Data = CheckZIP($_FILES['datei']['tmp_name']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
