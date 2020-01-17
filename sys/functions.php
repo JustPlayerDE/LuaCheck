@@ -51,11 +51,11 @@ function CheckZIP($file)
 
                     $Line = 0;
                     $file = explode("\n", zip_entry_read($zip_entry));
-                    foreach ($file as $t) {
+                    foreach ($file as $LineString) {
                         $Line++;
                         foreach ($SearchFor as $SearchThis => $ItemInfo) {
                             //if(!preg_match("/\/\//",$t, $treffer))
-                            if (preg_match($SearchThis, $t, $treffer)) {
+                            if (preg_match($SearchThis, $LineString)) {
 
                                 foreach ($Whitelisted as $IgnoreThis) {
                                     if (preg_match($IgnoreThis, zip_entry_name($zip_entry))) {
@@ -72,15 +72,15 @@ function CheckZIP($file)
                                 $Return["Hits"][] = array(
                                     'Found' => $t,
                                     'Path' => zip_entry_name($zip_entry),
-                                    'Type' => $SearchFor[$SearchThis]['Type'],
-                                    'Desc' => $SearchFor[$SearchThis]['Desc'],
-                                    'Risk' => $SearchFor[$SearchThis]['Risk'],
+                                    'Type' => $ItemInfo['Type'],
+                                    'Desc' => $ItemInfo['Desc'],
+                                    'Risk' => $ItemInfo['Risk'],
                                     'Line' => $Line
                                 );
 
-                                $Return["risk"]["total"] = $Return["risk"]["total"] + $SearchFor[$SearchThis]['Risk'];
-                                if ($SearchFor[$SearchThis]['Risk'] > $Return["risk"]["highest"])
-                                    $Return["risk"]["highest"] = $SearchFor[$SearchThis]['Risk'];
+                                $Return["risk"]["total"] = $Return["risk"]["total"] + $ItemInfo['Risk'];
+                                if ($ItemInfo['Risk'] > $Return["risk"]["highest"])
+                                    $Return["risk"]["highest"] = $ItemInfo['Risk'];
                             }
                         }
                     }
