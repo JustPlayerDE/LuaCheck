@@ -49,9 +49,9 @@ if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
 
 <pre id="Advanced" style="display:none;">
 <?php
-echo "Path,Line,Type,Description,Risk\n";
+echo "Path|Line|Type|Description|Risk\n";
 foreach ($Data["Hits"] as $Hit) {
-    echo $Hit["Path"] . "," . $Hit["Line"] . "," . $Hit["Type"] . "," . $Hit["Desc"] . "," . $Hit["Risk"] . "\n";
+    echo $Hit["Path"] . "|" . $Hit["Line"] . "|" . $Hit["Type"] . "|" . $Hit["Desc"] . "|" . $Hit["Risk"] . "\n";
 }
 ?>
 </pre>
