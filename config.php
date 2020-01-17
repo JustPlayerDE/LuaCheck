@@ -1,5 +1,5 @@
 <?php
-$Config['FileSize'] = 1048576; // Max file size in bytes
+$Config['FileSize'] = 1024; // Max file size in bytes
 $Config['FileTypes'] = array( // What files should be checked? You can add "*" to check every file
     "lua"
 );

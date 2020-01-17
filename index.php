@@ -11,7 +11,7 @@ if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
         header("Location: /?invalid&type");
         exit();
     }
-    if ($_FILES["datei"]["size"] > $Config['FileSize']) {
+    if ($_FILES["datei"]["size"] > ($Config['FileSize'] * 1024)) {
         header("Location: /?invalid&size");
         exit();
     }

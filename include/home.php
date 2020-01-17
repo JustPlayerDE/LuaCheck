@@ -21,7 +21,7 @@
     }
     ?>
     <fieldset class="form-group">
-        <label for="file">Choose your file. <small>Max file size: <?= $Config['FileSize'] / 1024; ?> KBytes</small></label>
+        <label for="file">Choose your file. <small>Max file size: <?= $Config['FileSize']; ?> KBytes</small></label>
         <input class="form-control col-sm-5" id="file" type="file" name="datei">
     </fieldset>
     <input type="submit" name="submit_file" class="btn btn-block" value="Upload & Check">
