@@ -1,8 +1,5 @@
-LuaChecker is a little web app to check lua addons for Garrys Mod for functions that are most used in back doors
+# LuaCheck
 
-its a Free time project and i cant effort my complete time to it so it seems a little unsorted ^^
+LuaCheck is a simple php application which searches for basic ways to create backdoors in Garrysmod lua addons.
 
-and this is a proof of concept ;)
-
-
-You can do what you want with it but pls name me :)
+Demo:  https://tools.justplayer.de/luacheck/
