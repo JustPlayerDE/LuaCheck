@@ -5,32 +5,17 @@ $Config['Search_For_The_File'] = "lua"; // What for files need to be checked? (o
 // Add only things to this if you know what you are doing! (this may break the scanner if you
 // put (for example) "\/" in this then anything is whitelisted that has a "/" in there path
 // This need to be in RegEx format
-$Whitelisted[] = "/\/lua\/ulx\/modules\/"; // Default ULX whitelist
+$Whitelisted[] = "/\/lua\/ulx\/modules\//"; // Default ULX whitelist
 
 
 //  Here you can use the expression for a item and the information about it
-$SearchFor[] = "/STEAM_[0-9]+:[0-9]+:[0-9]+/";
-$SearchFor[] = "/http.Post/";
-$SearchFor[] = "/http.Fetch/";
-$SearchFor[] = "/CompileString/";
-$SearchFor[] = "/RunString/";
-$SearchFor[] = "/removeip/";
-$SearchFor[] = "/removeid/";
-$SearchFor[] = "/banip/";
-$SearchFor[] = "/writeid/";
-$SearchFor[] = "/file.Read/";
-$SearchFor[] = "/file.Delete/";
-$SearchFor[] = "/0[xX][0-9a-fA-F]+/";
-$SearchFor[] = "/\\[0-9]+\\[0-9]+/";
-$SearchFor[] = "/\\[xX][0-9a-fA-F][0-9a-fA-F]/";
-$SearchFor[] = "/getfenv/";
-$SearchFor[] = "/_G\[/";
-$SearchFor[] = "/rcon_password/";
-$SearchFor[] = "/SetUserGroup/";
 
-$SearchFor["/SetUserGroup/"]['Type'] = "USERMGMT";
-$SearchFor["/SetUserGroup/"]['Risk'] = "3";
-$SearchFor["/SetUserGroup/"]['Desc'] = "Setting user Group";
+// New style
+$SearchFor["/SetUserGroup/"] = array(
+    "Type" => "USERMGMT",
+    "Risk" => 3,
+    "Desc" => "Setting user Group"
+);
 
 $SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"]['Type'] = "AUTHENT";
 $SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"]['Risk'] = "2";

@@ -41,17 +41,14 @@ require('sys/functions.php');
     </nav>
 
 
-    <div class="container" style="width:80%;">
-
+    <div class="container">
         <?php
 
         include("include/" . maininclude());
 
         ?>
-
-
         <div class="pull-right">
-            <br>LuaCheck by <a href="https://justplayer.de" target="_blank">JustPlayerDE</a>
+            <br>LuaCheck by <a href="https://github.com/JustPlayerDE" target="_blank">JustPlayerDE</a>
         </div>
     </div>
 
