@@ -20,30 +20,30 @@ $SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"] = array(
 $SearchFor["/http.Post/"] = array(
     "Type" => "NETWORK",
     "Risk" => 4,
-    "Desc" => "HTTP server call"
+    "Desc" => "HTTP POST call, Can be used to update analytics or to execute external code."
 );
 $SearchFor["/http.Fetch/"] = array(
     "Type" => "NETWORK",
     "Risk" => 4,
-    "Desc" => "HTTP server call"
+    "Desc" => "HTTP GET call, Can be used to execute external code."
 );
 
 $SearchFor["/CompileString/"] = array(
     "Type" => "DYNCODE",
     "Risk" => 3,
-    "Desc" => "Dynamic code execution"
+    "Desc" => "Dynamic code execution, Mostly used for DRMs"
 );
 
 $SearchFor["/RunString/"] = array(
     "Type" => "DYNCODE",
     "Risk" => 3,
-    "Desc" => "Dynamic code execution"
+    "Desc" => "Dynamic code execution, used to run code. (Possible backdoor)"
 );
 
 $SearchFor["/RunStringEx/"] = array(
     "Type" => "DYNCODE",
     "Risk" => 3,
-    "Desc" => "Dynamic code execution"
+    "Desc" => "Dynamic code execution, used to run code. (Possible backdoor)"
 );
 
 $SearchFor["/removeip/"] = array(
@@ -79,7 +79,7 @@ $SearchFor["/file.Read/"] = array(
 $SearchFor["/file.Delete/"] = array(
     "Type" => "FILESYS",
     "Risk" => 2,
-    "Desc" => "Reading deletion"
+    "Desc" => "File deletion"
 );
 
 $SearchFor["/file.Write/"] = array(
@@ -91,25 +91,19 @@ $SearchFor["/file.Write/"] = array(
 $SearchFor["/0[xX][0-9a-fA-F]+/"] = array(
     "Type" => "OBFUSC",
     "Risk" => 4,
-    "Desc" => "Obfuscated / encrypted code"
+    "Desc" => "Obfuscated / encrypted code, mostly used in DRMs or backdoors"
 );
 
 $SearchFor["/\\[0-9]+\\[0-9]+/"] = array(
     "Type" => "OBFUSC",
     "Risk" => 4,
-    "Desc" => "Obfuscated / encrypted code"
+    "Desc" => "Obfuscated / encrypted code, mostly used in DRMs or backdoors"
 );
 
 $SearchFor["/\\[xX][0-9a-fA-F][0-9a-fA-F]/"] = array(
     "Type" => "OBFUSC",
     "Risk" => 4,
-    "Desc" => "Obfuscated / encrypted code"
-);
-
-$SearchFor["/getfenv/"] = array(
-    "Type" => "MISC",
-    "Risk" => 1,
-    "Desc" => "Call to getfenv()"
+    "Desc" => "Obfuscated / encrypted code, mostly used in DRMs or backdoors"
 );
 
 $SearchFor["/getfenv/"] = array(
@@ -127,5 +121,5 @@ $SearchFor["/_G/"] = array(
 $SearchFor["/rcon_password/"] = array(
     "Type" => "RCON",
     "Risk" => 5,
-    "Desc" => "Reading or Setting the Server's RCON"
+    "Desc" => "Access to rcon_password, this file should be checked! (Can be used to access your server's RCON (Remote Console)"
 );
