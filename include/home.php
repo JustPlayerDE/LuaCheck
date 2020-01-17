@@ -17,17 +17,6 @@
 <p>Version:</p>
 <pre>1.0.0 ALPHA</pre>
 
-
-<a href="#" onclick="toggle_visibility('Advanced');">Show some Debug information</a>
-<pre id="Advanced" style="display:none;">
-<?
-echo '$_SESSION:';
-print_r($_SESSION);
-echo '<br>$_POST:';
-print_r($_POST);
-?>
-</pre>
-
 <script type="text/javascript">
     function toggle_visibility(id) {
         var e = document.getElementById(id);
