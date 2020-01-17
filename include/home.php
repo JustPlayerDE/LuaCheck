@@ -41,7 +41,8 @@
 
     // Just to prevent useless uploads
     $('form').submit(function(e) {
-        if (!($('#file')[0].files[0].size < maxSize * 1024)) {
+        var file = $('#file')[0].files[0] 
+        if (file && !(file.size < maxSize * 1024)) {
             //Prevent default and display error
             alert("The file cannot be larger than " + maxSize + " KBytes!");
             e.preventDefault();
