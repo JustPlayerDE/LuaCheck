@@ -11,75 +11,121 @@ $SearchFor["/SetUserGroup/"] = array(
     "Desc" => "Setting user Group"
 );
 
-$SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"]['Type'] = "AUTHENT";
-$SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"]['Risk'] = "2";
-$SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"]['Desc'] = "Presence of Steam ID";
+$SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"] = array(
+    "Type" => "AUTHENT",
+    "Risk" => 2,
+    "Desc" => "Presence of SteamID"
+);
 
-$SearchFor["/http.Post/"]['Type'] = "NETWORK";
-$SearchFor["/http.Post/"]['Risk'] = "4";
-$SearchFor["/http.Post/"]['Desc'] = "HTTP server call";
+$SearchFor["/http.Post/"] = array(
+    "Type" => "NETWORK",
+    "Risk" => 4,
+    "Desc" => "HTTP server call"
+);
+$SearchFor["/http.Fetch/"] = array(
+    "Type" => "NETWORK",
+    "Risk" => 4,
+    "Desc" => "HTTP server call"
+);
 
-$SearchFor["/http.Fetch/"]['Type'] = "NETWORK";
-$SearchFor["/http.Fetch/"]['Risk'] = "4";
-$SearchFor["/http.Fetch/"]['Desc'] = "HTTP server call";
+$SearchFor["/CompileString/"] = array(
+    "Type" => "DYNCODE",
+    "Risk" => 3,
+    "Desc" => "Dynamic code execution"
+);
 
-$SearchFor["/CompileString/"]['Type'] = "DYNCODE";
-$SearchFor["/CompileString/"]['Risk'] = "3";
-$SearchFor["/CompileString/"]['Desc'] = "Dynamic code execution";
+$SearchFor["/RunString/"] = array(
+    "Type" => "DYNCODE",
+    "Risk" => 3,
+    "Desc" => "Dynamic code execution"
+);
 
-$SearchFor["/RunString/"]['Type'] = "DYNCODE";
-$SearchFor["/RunString/"]['Risk'] = "3";
-$SearchFor["/RunString/"]['Desc'] = "Dynamic code execution";
+$SearchFor["/RunStringEx/"] = array(
+    "Type" => "DYNCODE",
+    "Risk" => 3,
+    "Desc" => "Dynamic code execution"
+);
 
-$SearchFor["/removeip/"]['Type'] = "BANMGMT";
-$SearchFor["/removeip/"]['Risk'] = "2";
-$SearchFor["/removeip/"]['Desc'] = "Unban by IP address";
+$SearchFor["/removeip/"] = array(
+    "Type" => "BANMGMT",
+    "Risk" => 2,
+    "Desc" => "Unban by IP address"
+);
 
-$SearchFor["/removeid/"]['Type'] = "BANMGMT";
-$SearchFor["/removeid/"]['Risk'] = "2";
-$SearchFor["/removeid/"]['Desc'] = "Unban by Steam ID";
+$SearchFor["/removeid/"] = array(
+    "Type" => "BANMGMT",
+    "Risk" => 2,
+    "Desc" => "Unban by SteamID"
+);
 
-$SearchFor["/banip/"]['Type'] = "BANMGMT";
-$SearchFor["/banip/"]['Risk'] = "2";
-$SearchFor["/banip/"]['Desc'] = "Ban by IP address";
+$SearchFor["/banip/"] = array(
+    "Type" => "BANMGMT",
+    "Risk" => 2,
+    "Desc" => "Ban by IP SteamID"
+);
 
+$SearchFor["/writeid/"] = array(
+    "Type" => "BANMGMT",
+    "Risk" => 2,
+    "Desc" => "Writing bans to disk"
+);
 
-$SearchFor["/writeid/"]['Type'] = "BANMGMT";
-$SearchFor["/writeid/"]['Risk'] = "2";
-$SearchFor["/writeid/"]['Desc'] = "Writing bans to disk";
+$SearchFor["/file.Read/"] = array(
+    "Type" => "FILESYS",
+    "Risk" => 2,
+    "Desc" => "Reading file contents"
+);
 
-$SearchFor["/file.Read/"]['Type'] = "FILESYS";
-$SearchFor["/file.Read/"]['Risk'] = "2";
-$SearchFor["/file.Read/"]['Desc'] = "Reading file contents";
+$SearchFor["/file.Delete/"] = array(
+    "Type" => "FILESYS",
+    "Risk" => 2,
+    "Desc" => "Reading deletion"
+);
 
-$SearchFor["/file.Delete/"]['Type'] = "FILESYS";
-$SearchFor["/file.Delete/"]['Risk'] = "2";
-$SearchFor["/file.Delete/"]['Desc'] = "File deletion";
+$SearchFor["/file.Write/"] = array(
+    "Type" => "FILESYS",
+    "Risk" => 2,
+    "Desc" => "File writing"
+);
 
-$SearchFor["/file.Write/"]['Type'] = "FILESYS";
-$SearchFor["/file.Write/"]['Risk'] = "2";
-$SearchFor["/file.Write/"]['Desc'] = "File writing";
+$SearchFor["/0[xX][0-9a-fA-F]+/"] = array(
+    "Type" => "OBFUSC",
+    "Risk" => 4,
+    "Desc" => "Obfuscated / encrypted code"
+);
 
-$SearchFor["/0[xX][0-9a-fA-F]+/"]['Type'] = "OBFUSC";
-$SearchFor["/0[xX][0-9a-fA-F]+/"]['Risk'] = "4";
-$SearchFor["/0[xX][0-9a-fA-F]+/"]['Desc'] = "Obfuscated / encrypted code";
+$SearchFor["/\\[0-9]+\\[0-9]+/"] = array(
+    "Type" => "OBFUSC",
+    "Risk" => 4,
+    "Desc" => "Obfuscated / encrypted code"
+);
 
-$SearchFor["/\\[0-9]+\\[0-9]+/"]['Type'] = "OBFUSC";
-$SearchFor["/\\[0-9]+\\[0-9]+/"]['Risk'] = "4";
-$SearchFor["/\\[0-9]+\\[0-9]+/"]['Desc'] = "Obfuscated / encrypted code";
+$SearchFor["/\\[xX][0-9a-fA-F][0-9a-fA-F]/"] = array(
+    "Type" => "OBFUSC",
+    "Risk" => 4,
+    "Desc" => "Obfuscated / encrypted code"
+);
 
-$SearchFor["/\\[xX][0-9a-fA-F][0-9a-fA-F]/"]['Type'] = "OBFUSC";
-$SearchFor["/\\[xX][0-9a-fA-F][0-9a-fA-F]/"]['Risk'] = "4";
-$SearchFor["/\\[xX][0-9a-fA-F][0-9a-fA-F]/"]['Desc'] = "Obfuscated / encrypted code";
+$SearchFor["/getfenv/"] = array(
+    "Type" => "MISC",
+    "Risk" => 1,
+    "Desc" => "Call to getfenv()"
+);
 
-$SearchFor["/getfenv/"]['Type'] = "MISC";
-$SearchFor["/getfenv/"]['Risk'] = "1";
-$SearchFor["/getfenv/"]['Desc'] = "Call to getfenv()";
+$SearchFor["/getfenv/"] = array(
+    "Type" => "MISC",
+    "Risk" => 1,
+    "Desc" => "Call to getfenv()"
+);
 
-$SearchFor["/_G\[/"]['Type'] = "MISC";
-$SearchFor["/_G\[/"]['Risk'] = "1";
-$SearchFor["/_G\[/"]['Desc'] = "References global table";
+$SearchFor["/_G/"] = array(
+    "Type" => "MISC",
+    "Risk" => 1,
+    "Desc" => "References global table"
+);
 
-$SearchFor["/rcon_password/"]['Type'] = "RCON";
-$SearchFor["/rcon_password/"]['Risk'] = "5";
-$SearchFor["/rcon_password/"]['Desc'] = "Reading or Setting the Server's RCON";
+$SearchFor["/rcon_password/"] = array(
+    "Type" => "RCON",
+    "Risk" => 5,
+    "Desc" => "Reading or Setting the Server's RCON"
+);
