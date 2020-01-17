@@ -6,7 +6,7 @@
 <br />
 <form action="?p=check" method="post" enctype="multipart/form-data">
     <h4>Check Your Code (Max 2Mb, ZIP):</h4>
-    <input class="control-label col-sm-5" type="file" name="datei"> <input type="submit" name="lelelrs">
+    <input class="control-label col-sm-5" type="file" name="datei"> <input type="submit" name="submit_file">
 </form>
 <br>
 <p>Please note that we do not save any content that you upload! the only space in time where your file are located is in the default PHP temporary storage in a by the Doctor secured Box named "Tardis" ;)</p>
