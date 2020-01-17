@@ -20,8 +20,8 @@ if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
     <div class="row">
         <?php if (count($Data["Hits"]) > 0) { ?>
             <p class="h3">Total Hits: <b><?= count($Data["Hits"]); ?></b></p>
-            <p class="h3">average risk: <b><?= round((($Data["risk"]["total"] / count($Data["Hits"])) * 2), 0) / 2; ?></b></p>
-            <p class="h3">highest risk: <b><?= $Data["risk"]["highest"]; ?></b></p>
+            <p class="h3">average risk: <b><?= round((($Data["risk"]["total"] / count($Data["Hits"])) * 2), 0) / 2; ?></b> / 5</p>
+            <p class="h3">highest risk: <b><?= $Data["risk"]["highest"]; ?></b> / 5</p>
         <?php } else { ?>
             <p class="h3"><small>may</small> Secure to use, at least we found nothing here</p>
         <?php } ?>
