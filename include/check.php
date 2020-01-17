@@ -1,18 +1,3 @@
-<?php
-
-if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
-    if (!$_FILES['datei']['type'] == "zip" or $_FILES["datei"]["size"] > $Config['FileSize']) {
-        echo '<meta http-equiv="refresh" content="0; URL=' . $_SERVER['PHP_SELF'] . '">';
-        die();
-    }
-
-    $Data = CheckZIP($_FILES['datei']['tmp_name']);
-} else {
-    header("Location: /?p=home");
-}
-
-?>
-
 <div class="container text-center">
     <div class="row">
         <p class="h2">This Addon is rated as:</p>
