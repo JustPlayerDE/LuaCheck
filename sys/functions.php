@@ -1,18 +1,5 @@
 <?php
-
-function converttext($text){ // idk why i put it in here but it can maybe help... in the next years... i hope xD
- $text = str_replace("ä", "&auml;", $text);
- $text = str_replace("ö", "&ouml;", $text);
- $text = str_replace("ü", "&uuml;", $text);
- $text = str_replace("Ä", "&Auml;", $text);
- $text = str_replace("Ö", "&Ouml;", $text);
- $text = str_replace("Ü", "&Uuml;", $text);
- $text = str_replace("ß", "&szlig;", $text);
- $text = str_replace("[\\", "[", $text); 
- return $text;
-}
  
-
 function maininclude(){
 	$o = "";
 	$page = "";
