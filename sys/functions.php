@@ -37,44 +37,47 @@ function CheckZIP($file)
         "total" => 0,
         "highest" => 0,
     );
+    try {
+        $zip = zip_open($file);
+        if ($zip) {
+            while ($zip_entry = zip_read($zip)) {
+                $FName = pathinfo(zip_entry_name($zip_entry));
 
-    $zip = zip_open($file);
-    if ($zip) {
-        while ($zip_entry = zip_read($zip)) {
+                if (isset($FName["extension"]) && (in_array('*', $Config['FileTypes']) || in_array($FName["extension"], $Config['FileTypes']))) {
+                    if (zip_entry_open($zip, $zip_entry)) {
+                        $Line = 0;
+                        $file = explode("\n", zip_entry_read($zip_entry));
+                        foreach ($file as $LineString) {
+                            $Line++;
+                            foreach ($SearchFor as $SearchThis => $ItemInfo) {
+                                //if(!preg_match("/\/\//",$t, $treffer))
+                                if (preg_match($SearchThis, $LineString)) {
+                                    $Return["Hits"][] = array(
+                                        'Found' => $LineString,
+                                        'Path' => zip_entry_name($zip_entry),
+                                        'Type' => $ItemInfo['Type'],
+                                        'Desc' => $ItemInfo['Desc'],
+                                        'Risk' => $ItemInfo['Risk'],
+                                        'Line' => $Line
+                                    );
 
-            $FName = pathinfo(zip_entry_name($zip_entry));
-
-            if (isset($FName["extension"]) && (in_array('*', $Config['FileTypes']) || in_array($FName["extension"], $Config['FileTypes'])))
-                if (zip_entry_open($zip, $zip_entry)) {
-
-                    $Line = 0;
-                    $file = explode("\n", zip_entry_read($zip_entry));
-                    foreach ($file as $LineString) {
-                        $Line++;
-                        foreach ($SearchFor as $SearchThis => $ItemInfo) {
-                            //if(!preg_match("/\/\//",$t, $treffer))
-                            if (preg_match($SearchThis, $LineString)) {
-
-                                $Return["Hits"][] = array(
-                                    'Found' => $LineString,
-                                    'Path' => zip_entry_name($zip_entry),
-                                    'Type' => $ItemInfo['Type'],
-                                    'Desc' => $ItemInfo['Desc'],
-                                    'Risk' => $ItemInfo['Risk'],
-                                    'Line' => $Line
-                                );
-
-                                $Return["risk"]["total"] = $Return["risk"]["total"] + $ItemInfo['Risk'];
-                                if ($ItemInfo['Risk'] > $Return["risk"]["highest"])
-                                    $Return["risk"]["highest"] = $ItemInfo['Risk'];
+                                    $Return["risk"]["total"] = $Return["risk"]["total"] + $ItemInfo['Risk'];
+                                    if ($ItemInfo['Risk'] > $Return["risk"]["highest"]) {
+                                        $Return["risk"]["highest"] = $ItemInfo['Risk'];
+                                    }
+                                }
                             }
                         }
-                    }
 
-                    zip_entry_close($zip_entry);
+                        zip_entry_close($zip_entry);
+                    }
                 }
+            }
+            zip_close($zip);
         }
-        zip_close($zip);
+        return $Return;
+    } catch (Exception $e) {
+        header("Location: /?error");
+        exit();
     }
-    return $Return;
 }
