@@ -31,7 +31,6 @@ function CheckZIP($file)
 {
     global $Config;
     global $SearchFor;
-    global $Whitelisted;
 
     $Return["Hits"] = array();
     $Return["risk"] = array(
@@ -56,18 +55,6 @@ function CheckZIP($file)
                         foreach ($SearchFor as $SearchThis => $ItemInfo) {
                             //if(!preg_match("/\/\//",$t, $treffer))
                             if (preg_match($SearchThis, $LineString)) {
-
-                                foreach ($Whitelisted as $IgnoreThis) {
-                                    if (preg_match($IgnoreThis, zip_entry_name($zip_entry))) {
-                                        $BreakCurrent = true;
-                                    }
-                                }
-
-                                if ($BreakCurrent) {
-                                    continue;
-                                }
-
-
 
                                 $Return["Hits"][] = array(
                                     'Found' => $t,

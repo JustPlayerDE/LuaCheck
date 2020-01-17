@@ -2,12 +2,6 @@
 $Config['Max_Allowed_Bytes_Per_Upload'] = 2000000; // The Max file size allowed per Uploaded File
 $Config['Search_For_The_File'] = "lua"; // What for files need to be checked? (only one type, sorry)
 
-// Add only things to this if you know what you are doing! (this may break the scanner if you
-// put (for example) "\/" in this then anything is whitelisted that has a "/" in there path
-// This need to be in RegEx format
-$Whitelisted[] = "/\/lua\/ulx\/modules\//"; // Default ULX whitelist
-
-
 //  Here you can use the expression for a item and the information about it
 
 // New style
