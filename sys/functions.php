@@ -57,7 +57,7 @@ function CheckZIP($file)
                             if (preg_match($SearchThis, $LineString)) {
 
                                 $Return["Hits"][] = array(
-                                    'Found' => $t,
+                                    'Found' => $LineString,
                                     'Path' => zip_entry_name($zip_entry),
                                     'Type' => $ItemInfo['Type'],
                                     'Desc' => $ItemInfo['Desc'],
