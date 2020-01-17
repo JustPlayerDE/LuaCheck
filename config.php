@@ -104,5 +104,3 @@ $SearchFor["/_G\[/"]['Desc'] = "References global table";
 $SearchFor["/rcon_password/"]['Type'] = "RCON";
 $SearchFor["/rcon_password/"]['Risk'] = "5";
 $SearchFor["/rcon_password/"]['Desc'] = "Reading or Setting the Server's RCON";
-
-?>
