@@ -1,7 +1,8 @@
 <?php
-$Config['Max_Allowed_Bytes_Per_Upload'] = 2000000000; // The Max file size allowed per Uploaded File
-$Config['Search_For_The_File'] = "lua"; // What for files need to be checked? (only one type, sorry)
-
+$Config['FileSize'] = 2000000000; // Max file size in bytes
+$Config['FileTypes'] = array( // What files should be checked? You can add "*" to check every file
+    "lua"
+);
 //  Here you can use the expression for a item and the information about it
 
 // New style

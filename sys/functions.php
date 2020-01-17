@@ -44,7 +44,7 @@ function CheckZIP($file)
 
             $FName = pathinfo(zip_entry_name($zip_entry));
 
-            if (isset($FName["extension"]) && $FName["extension"] == $Config['Search_For_The_File'])
+            if (isset($FName["extension"]) && (in_array('*', $Config['FileTypes']) || in_array($FName["extension"], $Config['FileTypes'])))
                 if (zip_entry_open($zip, $zip_entry)) {
 
                     $Line = 0;

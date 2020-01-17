@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
-    if (!$_FILES['datei']['type'] == "zip" or $_FILES["datei"]["size"] > $Config['Max_Allowed_Bytes_Per_Upload']) {
+    if (!$_FILES['datei']['type'] == "zip" or $_FILES["datei"]["size"] > $Config['FileSize']) {
         echo '<meta http-equiv="refresh" content="0; URL=' . $_SERVER['PHP_SELF'] . '">';
         die();
     }
