@@ -37,7 +37,6 @@ function CheckZIP($file)
         "total" => 0,
         "highest" => 0,
     );
-    $BreakCurrent = false;
 
     $zip = zip_open($file);
     if ($zip) {
