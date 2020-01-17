@@ -1,5 +1,5 @@
 <?php
-$Config['Max_Allowed_Bytes_Per_Upload'] = 2000000; // The Max file size allowed per Uploaded File
+$Config['Max_Allowed_Bytes_Per_Upload'] = 2000000000; // The Max file size allowed per Uploaded File
 $Config['Search_For_The_File'] = "lua"; // What for files need to be checked? (only one type, sorry)
 
 //  Here you can use the expression for a item and the information about it
@@ -20,12 +20,30 @@ $SearchFor["/STEAM_[0-9]+:[0-9]+:[0-9]+/"] = array(
 $SearchFor["/http.Post/"] = array(
     "Type" => "NETWORK",
     "Risk" => 4,
-    "Desc" => "HTTP POST call, Can be used to update analytics or to execute external code."
+    "Desc" => "HTTP POST call, Can be used to update analytics or to load external code."
 );
 $SearchFor["/http.Fetch/"] = array(
     "Type" => "NETWORK",
     "Risk" => 4,
-    "Desc" => "HTTP GET call, Can be used to execute external code."
+    "Desc" => "HTTP GET call, Can be used to load external code."
+);
+
+$SearchFor["%^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@|\d{1,3}(?:\.\d{1,3}){3}|(?:(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)(?:\.(?:[a-z\d\x{00a1}-\x{ffff}]+-?)*[a-z\d\x{00a1}-\x{ffff}]+)*(?:\.[a-z\x{00a1}-\x{ffff}]{2,6}))(?::\d+)?(?:[^\s]*)?$%iu"] = array(
+    "Type" => "NETWORK",
+    "Risk" => 4,
+    "Desc" => "Presence of an URL/URI, can be used for update notifications or backdoors."
+);
+
+$SearchFor["/util.AddNetworkString/"] = array(
+    "Type" => "NETWORK",
+    "Risk" => 2,
+    "Desc" => "Register netStrings, mostly used to network simple data but can also be used to create exploits."
+);
+
+$SearchFor["/net.Receive/"] = array(
+    "Type" => "NETWORK",
+    "Risk" => 2,
+    "Desc" => "Receiving netStrings, mostly used to network simple data but can also be used to use exploits."
 );
 
 $SearchFor["/CompileString/"] = array(
@@ -116,6 +134,12 @@ $SearchFor["/_G/"] = array(
     "Type" => "MISC",
     "Risk" => 1,
     "Desc" => "References global table"
+);
+
+$SearchFor["/LocalPlayer():ConCommand/"] = array(
+    "Type" => "MISC",
+    "Risk" => 2,
+    "Desc" => "Running Console Commands on client"
 );
 
 $SearchFor["/rcon_password/"] = array(
