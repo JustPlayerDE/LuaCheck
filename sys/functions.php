@@ -27,6 +27,16 @@ function maininclude()
     return $o . '.php';
 }
 
+function getURL()
+{
+    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https')
+        === FALSE ? 'http' : 'https';
+    $host     = $_SERVER['HTTP_HOST'];
+    $script   = $_SERVER['SCRIPT_NAME'];
+
+    return $protocol . '://' . $host . $script;
+}
+
 function CheckZIP($file)
 {
     global $Config;
@@ -77,7 +87,7 @@ function CheckZIP($file)
         }
         return $Return;
     } catch (Exception $e) {
-        header("Location: /?error");
+        header("Location: " . getURL() . "/?error");
         exit();
     }
 }

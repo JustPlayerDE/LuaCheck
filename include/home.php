@@ -2,7 +2,7 @@
 <p>With this tool you can scan a Addon (zip) for basic functions which can be used to create backdoors or exploits</p>
 <p>This tool <b>cant</b> detect real backdoors or exploits, it only tells you where you <b>may</b> find them</p>
 <br />
-<form action="?p=check" method="post" enctype="multipart/form-data">
+<form action="<?php getURL(); ?>?p=check" method="post" enctype="multipart/form-data">
 
     <?php
     if (isset($_GET["invalid"])) {

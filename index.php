@@ -8,15 +8,21 @@ if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
     $AllowedTypes = array("application/x-zip-compressed", "application/gzip", "application/zip");
 
     if (!in_array($_FILES["datei"]["type"], $AllowedTypes)) {
-        header("Location: /?invalid&type");
+        header("Location: " . getURL() . "?invalid&type");
         exit();
     }
     if ($_FILES["datei"]["size"] > ($Config['FileSize'] * 1024)) {
-        header("Location: /?invalid&size");
+        header("Location: " . getURL() . "?invalid&size");
         exit();
     }
 
     $Data = CheckZIP($_FILES['datei']['tmp_name']);
+}
+
+if (isset($_GET["p"]) && $_GET["p"] == "check") {
+    if (!$Data) {
+        header("Location: " . getURL());
+    }
 }
 
 ?>
@@ -46,7 +52,7 @@ if (isset($_FILES['datei']) && isset($_POST['submit_file'])) {
             </div>
             <div class="collapse navbar-collapse" id="UltimateNav">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="./">Home</a></li>
+                    <li class="active"><a href="<?= getURL(); ?>">Home</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
